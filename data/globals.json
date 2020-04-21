@@ -1,0 +1,24 @@
+[
+  {
+    "id": "GetID",
+    "desc": "Returns two values, a card object and its ID, used before the initial effect.",
+    "ret": [
+      "table",
+      "number"
+    ]
+  },
+  {
+    "id": "userdatatype",
+    "argstr": "o: any",
+    "args": [
+      {
+        "id": "o",
+        "type": "any"
+      }
+    ],
+    "desc": "Checks if a variable is a Card, Group or Effect",
+    "ret": [
+      "string"
+    ]
+  }
+]
