@@ -1,44 +1,81 @@
 {
-	"name": "autocomplete-ygoproapi",
-	"displayName": "Autocomplete YGOPro API",
-	"description": "An autocomplete extension for YGOPro scripting API",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.44.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"*"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "autocomplete-ygoproapi.update",
-				"title": "Autocomplete YGOPro API: Update Database"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./ --resolveJsonModule",
-		"lint": "eslint src --ext ts --resolveJsonModule",
-		"watch": "tsc -watch -p ./ --resolveJsonModule",
-		"pretest": "npm run compile && npm run lint"
-	},
-	"devDependencies": {
-		"@types/node": "^13.11.0",
-		"@types/papaparse": "^5.0.3",
-		"@types/vscode": "^1.44.0",
-		"@typescript-eslint/eslint-plugin": "^2.26.0",
-		"@typescript-eslint/parser": "^2.26.0",
-		"eslint": "^6.8.0",
-		"typescript": "^3.8.3"
-	},
-	"dependencies": {
-		"dapetcu21-luaparse": "^0.2.1",
-		"papaparse": "^5.2.0"
-	}
+  "name": "autocomplete-ygoproapi",
+  "displayName": "Autocomplete YGOPro API",
+  "description": "An autocomplete extension for YGOPro scripting API",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.44.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "autocomplete-ygoproapi.update",
+        "title": "Autocomplete YGOPro API: Update Database"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Autocomplete YGOPro API",
+      "properties": {
+        "autocomplete-ygoproapi.matchCaseForConstants": {
+          "type": "boolean",
+          "default": true,
+          "description": "If enabled, constants will only be suggested if what is being typed matches their case - usually upper case."
+        },
+        "autocomplete-ygoproapi.suggestOptionalArguments": {
+          "type": "boolean",
+          "default": false,
+          "description": "If optional arguments should appear in snippets."
+        },
+        "autocomplete-ygoproapi.showReturnTypes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show return types in suggestions."
+        },
+        "autocomplete-ygoproapi.useSpacing": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use spaces after commas in callbacks, methods and globals snippets."
+        },
+        "autocomplete-ygoproapi.updateFrequency": {
+          "type": "string",
+          "default": "Weekly",
+          "enum": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Never"
+          ],
+          "description": "How often should automatic updates happen."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ --resolveJsonModule",
+    "lint": "eslint src --ext ts --resolveJsonModule",
+    "watch": "tsc -watch -p ./ --resolveJsonModule",
+    "pretest": "npm run compile && npm run lint"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "@types/papaparse": "^5.0.3",
+    "@types/vscode": "^1.44.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "dapetcu21-luaparse": "^0.2.1",
+    "papaparse": "^5.2.0"
+  }
 }

@@ -53,7 +53,7 @@ export default class Parser {
       return
     let { variables, init } = node
     init = init.map((node: any) => Parser.handleInit(node))
-      .reduce((a: string[], b: string[]) => a.concat(b), [])
+      .reduce((a: string[], b: string[]) => a.concat(b), []) // FIX
     const localScope = Parser.getLastScope()
     const globalScope = Parser.getGlobalScope()
     variables.forEach((v: any, i: number) => {
@@ -92,7 +92,7 @@ export default class Parser {
   static handleCallBaseID(node: any) {
     const { name } = node
     const globalFn = Globals.find(g => g.id == name)
-    return globalFn ? globalFn.ret : null
+    return globalFn && globalFn.ret || null
   }
 
   static handleCallBaseMember(node: any) {
@@ -107,7 +107,7 @@ export default class Parser {
     if (!methodGroup)
       return null
     const method = methodGroup.methods.find(g => g.id == memberID)
-    return method && method.ret
+    return method && method.ret || null
   }
 
   static getCurrentTypeMethods(id: string) {

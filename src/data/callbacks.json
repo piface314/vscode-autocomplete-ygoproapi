@@ -455,7 +455,7 @@
     "usedBy": [ "EFFECT_FORCE_MZONE" ],
     "args": [
       { "id": "e", "type": "Effect", "desc": "owner effect" },
-      { "id": "C", "type": "Card", "desc": "monster card to be checked" },
+      { "id": "c", "type": "Card", "desc": "monster card to be checked" },
       { "id": "fp", "type": "number", "desc": "field player, whose zones will be limited" },
       { "id": "rp", "type": "number", "desc": "reason player" },
       { "id": "r", "type": "number", "desc": "reason" }

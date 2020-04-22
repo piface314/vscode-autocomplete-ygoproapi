@@ -1,14 +1,17 @@
+import * as vscode from 'vscode'
 
 
 export default class Config {
   static DAY = 86400
 
   static get(cfg: string): any {
-    return null
+    const cfgkey = `autocomplete-ygoproapi.${cfg}`
+    return vscode.workspace.getConfiguration().get(cfgkey)
   }
 
   static getFromEditor(cfg: string): any {
-    return null
+    const cfgkey = `editor.${cfg}`
+    return vscode.workspace.getConfiguration().get(cfgkey)
   }
 
   static getUpdateInterval(): number {

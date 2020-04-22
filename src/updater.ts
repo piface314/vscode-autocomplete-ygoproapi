@@ -12,12 +12,12 @@ export default class Updater {
   static LAST_UPDATE_KEY = 'autocomplete-ygoproapi.lastUpdate'
   static updating = 0
 
-  static update(forced: boolean) {
-    if (forced || Updater.shoudlUpdate()) {
-      Updater.updating = 2
-      Updater.readConstants()
-      Updater.readFunctions()
-    }
+  static update(forced: boolean = false) {
+    // if (forced || Updater.shoudlUpdate()) {
+    //   Updater.updating = 2
+    //   Updater.readConstants()
+    //   Updater.readFunctions()
+    // }
   }
 
   static finish() {
@@ -34,7 +34,7 @@ export default class Updater {
   }
 
   static shoudlUpdate() {
-    const lastUpdate = 0//atom.window.localStorage.getItem(Updater.LAST_UPDATE_KEY)
+    const lastUpdate = 1//atom.window.localStorage.getItem(Updater.LAST_UPDATE_KEY)
     if (!lastUpdate)
       return true
     return Date.now() - lastUpdate >= Config.getUpdateInterval()
