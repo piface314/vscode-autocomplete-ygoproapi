@@ -14,7 +14,6 @@ type Suggestion = {
 const USE_CHAR = '$'
 
 class CallbacksProvider {
-  private PRIORITY = 4
   private tab: string
   private space: string = ' '
   private useSearch: boolean = false
@@ -26,19 +25,18 @@ class CallbacksProvider {
     this.tab = insertSpaces ? ' '.repeat(tabSize) : '\t'
   }
 
-  findPrefix(line: string): string | null {
+  getPrefix(line: string): string | null {
     const fndef = line.match(/function\s+(.*)$/)
     if (!fndef)
       return null
     const m = fndef[1].match(/[^\.]*$/)
-    const prefix =  m && m[0]
-    this.prefix = prefix || ''
-    return prefix
+    return m && m[0]
   }
 
-  getSuggestions(): Suggestion[] {
+  getSuggestions(prefix: string): Suggestion[] {
     this.space = Config.get('useSpacing') ? ' ' : ''
-    return this.match(this.prefix).map(e => this.format(e))
+    this.prefix = prefix
+    return this.match(prefix).map(e => this.format(e))
   }
 
   match(prefix: string): CallbackEntry[] {
@@ -104,13 +102,13 @@ end`
 const provider = new CallbacksProvider()
 
 export const getDisposable = () => vscode.languages.registerCompletionItemProvider('lua', {
-  provideCompletionItems(doc: vscode.TextDocument, pos: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+  provideCompletionItems(doc, pos, token, context) {
     const line = doc.lineAt(pos).text.substr(0, pos.character)
-    const prefix = provider.findPrefix(line)
+    const prefix = provider.getPrefix(line)
     if (prefix == null)
       return undefined
     const range = new vscode.Range(pos.translate(0, -prefix.length), pos)
-    const sugs = provider.getSuggestions()
+    const sugs = provider.getSuggestions(prefix)
     return sugs.map(s => {
       const item = new vscode.CompletionItem(s.label, vscode.CompletionItemKind.Snippet)
       item.detail = s.detail

@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 
 
 export default class Config {
-  static DAY = 86400
+  static DAY = 86400000
 
   static get(cfg: string): any {
     const cfgkey = `autocomplete-ygoproapi.${cfg}`

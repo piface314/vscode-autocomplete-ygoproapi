@@ -2,20 +2,58 @@
   {
     "id": "Effect",
     "desc": "Represents an effect."
-  }, {
+  },
+  {
     "id": "Card",
     "desc": "Represents a card."
-  }, {
+  },
+  {
     "id": "Debug",
-    "desc": "Provides in-game debug features."
-  }, {
+    "desc": "Provides in-game debug features.",
+    "module": true
+  },
+  {
     "id": "aux",
-    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc."
-  }, {
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc.",
+    "module": true
+  },
+  {
     "id": "Duel",
-    "desc": "Contains all functions to operate on cards and effects in a Duel"
-  }, {
+    "desc": "Contains all functions to operate on cards and effects in a Duel",
+    "module": true
+  },
+  {
     "id": "Group",
     "desc": "Represents a group of cards."
+  },
+  {
+    "id": "Fusion",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Fusion Summoning",
+    "module": true
+  },
+  {
+    "id": "Ritual",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Ritual Summoning",
+    "module": true
+  },
+  {
+    "id": "Synchro",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Synchro Summoning",
+    "module": true
+  },
+  {
+    "id": "Xyz",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Xyz Summoning",
+    "module": true
+  },
+  {
+    "id": "Pendulum",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Pendulum Summoning",
+    "module": true
+  },
+  {
+    "id": "Link",
+    "desc": "Provides utility functions, summoning procedure templates, filter templates, etc. related to Link Summoning",
+    "module": true
   }
 ]

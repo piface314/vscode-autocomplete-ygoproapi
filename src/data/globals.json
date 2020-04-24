@@ -1,6 +1,8 @@
 [
   {
     "id": "GetID",
+    "argstr": "",
+    "args": [],
     "desc": "Returns two values, a card object and its ID, used before the initial effect.",
     "ret": [
       "table",

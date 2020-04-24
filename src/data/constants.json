@@ -1072,7 +1072,7 @@
   {
     "id": "CHAININFO_TRIGGERING_CODE",
     "value": "0x8000",
-    "desc": ""
+    "desc": "The id of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_CODE2",
@@ -1082,32 +1082,32 @@
   {
     "id": "CHAININFO_TRIGGERING_LEVEL",
     "value": "0x40000",
-    "desc": ""
+    "desc": "The level of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_RANK",
     "value": "0x80000",
-    "desc": ""
+    "desc": "The rank of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_ATTRIBUTE",
     "value": "0x100000",
-    "desc": ""
+    "desc": "The attribute of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_RACE",
     "value": "0x200000",
-    "desc": ""
+    "desc": "The type (warrior, zombie, etc) of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_ATTACK",
     "value": "0x400000",
-    "desc": ""
+    "desc": "The attack of the card that triggered the current Chain Link"
   },
   {
     "id": "CHAININFO_TRIGGERING_DEFENSE",
     "value": "0x800000",
-    "desc": ""
+    "desc": "The defense of the card that triggered the current Chain Link"
   },
   {
     "id": "RESET_SELF_TURN",
@@ -1447,7 +1447,7 @@
   {
     "id": "EFFECT_FLAG_IMMEDIATELY_APPLY",
     "value": "0x80000000",
-    "desc": "The effect of the card immediately when launched (cartoon kingdom)"
+    "desc": "The effect of the card immediately when launched (Toon Kingdom)"
   },
   {
     "id": "EFFECT_FLAG2_NAGA",
@@ -2362,12 +2362,12 @@
   {
     "id": "EFFECT_USE_EXTRA_MZONE",
     "value": "261",
-    "desc": "Block monster area"
+    "desc": "Card uses an additional monster zone"
   },
   {
     "id": "EFFECT_USE_EXTRA_SZONE",
     "value": "262",
-    "desc": "Magic zone blockade"
+    "desc": "Card uses an additional Spell/Trap zone"
   },
   {
     "id": "EFFECT_MAX_MZONE",
@@ -2377,7 +2377,7 @@
   {
     "id": "EFFECT_MAX_SZONE",
     "value": "264",
-    "desc": "Magic trap zone grid limit"
+    "desc": "Maximum number of Spell/Trap zone"
   },
   {
     "id": "EFFECT_FORCE_MZONE",
@@ -2522,7 +2522,7 @@
   {
     "id": "EFFECT_UNSUMMONABLE_CARD",
     "value": "336",
-    "desc": "Can not normally summon a monster"
+    "desc": "Cannot normally summon a monster"
   },
   {
     "id": "EFFECT_DISABLE_CHAIN_FIELD",
@@ -2532,7 +2532,7 @@
   {
     "id": "EFFECT_DISCARD_COST_CHANGE",
     "value": "338",
-    "desc": "Anti-trap traps to discard the price change (Guilding Ariadne)"
+    "desc": "Counter trap cards cost change (Guilding Ariadne)"
   },
   {
     "id": "EFFECT_HAND_SYNCHRO",
@@ -2957,7 +2957,7 @@
   {
     "id": "EVENT_DAMAGE_CALCULATING",
     "value": "1135",
-    "desc": "N/A"
+    "desc": ""
   },
   {
     "id": "EVENT_PRE_BATTLE_DAMAGE",
@@ -2967,7 +2967,7 @@
   {
     "id": "EVENT_BATTLE_END",
     "value": "1137",
-    "desc": "N/A"
+    "desc": ""
   },
   {
     "id": "EVENT_BATTLED",
@@ -3232,7 +3232,7 @@
   {
     "id": "CATEGORY_TOEXTRA",
     "value": "0x80000000",
-    "desc": ""
+    "desc": "Describes an effect that sends/return a card to the Extra Deck"
   },
   {
     "id": "HINT_EVENT",
@@ -4432,17 +4432,17 @@
   {
     "id": "WIN_REASON_EXODIA",
     "value": "0x10",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Exodia, the Forbidden One\""
   },
   {
     "id": "WIN_REASON_FINAL_COUNTDOWN",
     "value": "0x11",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Countdown\""
   },
   {
     "id": "WIN_REASON_VENNOMINAGA",
     "value": "0x12",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Vennominage, Deity of the Poisonous Snakes\""
   },
   {
     "id": "WIN_REASON_CREATORGOD",
@@ -4457,12 +4457,12 @@
   {
     "id": "WIN_REASON_DESTINY_BOARD",
     "value": "0x15",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Destiny Board\""
   },
   {
     "id": "WIN_REASON_LAST_TURN",
     "value": "0x16",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Last Turn\""
   },
   {
     "id": "WIN_REASON_PUPPET_LEO",
@@ -4477,12 +4477,12 @@
   {
     "id": "WIN_REASON_JACKPOT7",
     "value": "0x19",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Jackpot 7\""
   },
   {
     "id": "WIN_REASON_RELAY_SOUL",
     "value": "0x1a",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Relay Soul\""
   },
   {
     "id": "WIN_REASON_GHOSTRICK_MISCHIEF",
@@ -4497,12 +4497,12 @@
   {
     "id": "WIN_REASON_FA_WINNERS",
     "value": "0x1d",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"F.A. Winners\""
   },
   {
     "id": "WIN_REASON_FLYING_ELEPHANT",
     "value": "0x1e",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Flying Elephant\""
   },
   {
     "id": "WIN_REASON_EXODIA_DEFENDER",
@@ -4522,7 +4522,7 @@
   {
     "id": "WIN_REASON_FINAL_DRAW",
     "value": "0x22",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Final Draw\""
   },
   {
     "id": "WIN_REASON_CREATOR_MIRACLE",
@@ -4557,6 +4557,6 @@
   {
     "id": "WIN_REASON_DRAW_OF_FATE",
     "value": "0x57",
-    "desc": ""
+    "desc": "The hexadecimal value for a duel win caued by \"Draw of Fate\""
   }
 ]

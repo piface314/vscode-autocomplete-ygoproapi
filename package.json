@@ -34,11 +34,6 @@
           "default": false,
           "description": "If optional arguments should appear in snippets."
         },
-        "autocomplete-ygoproapi.showReturnTypes": {
-          "type": "boolean",
-          "default": true,
-          "description": "Show return types in suggestions."
-        },
         "autocomplete-ygoproapi.useSpacing": {
           "type": "boolean",
           "default": true,
@@ -75,7 +70,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@types/text-encoding": "0.0.35",
     "dapetcu21-luaparse": "^0.2.1",
-    "papaparse": "^5.2.0"
+    "papaparse": "^5.2.0",
+    "text-encoding": "^0.7.0"
   }
 }

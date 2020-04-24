@@ -1,65 +1,66 @@
+import * as vscode from 'vscode'
 import { Globals, FuncEntry, ArgEntry } from '../data'
 import Config from '../config'
 
 
+type Suggestion = {
+  label: string
+  desc: string
+  detail: string
+  snippet: string
+}
+
 export default class GlobalsProvider {
-  private PRIORITY = 2
-  private MIN_LEN = 3
   private space: string = ' '
   private opt: boolean = false
-  private ret: boolean = true
 
-  constructor() {
-    
+  constructor() { }
+
+  getSuggestions(): Suggestion[] {
+    this.space = Config.get('useSpacing') ? ' ' : ''
+    this.opt = Config.get('suggestOptionalArguments')
+    return Globals.map(e => this.format(e))
   }
 
-  getSuggestions(/*options*/) {
-    // const { prefix } = options
-    // this.space = Config.get('useSpacing') ? ' ' : ''
-    // this.opt = Config.get('suggestOptionalArguments')
-    // this.ret = Config.get('showReturnTypes')
-    // if (prefix.length >= this.MIN_LEN)
-    //   return this.match(prefix).map(e => this.format(e))
-	}
-
-  match(prefix: string): FuncEntry[] {
-    prefix = prefix.toLowerCase()
-    const starts: FuncEntry[] = [], includes: FuncEntry[] = []
-    Globals.forEach((e) => {
-      const id = e.id.toLowerCase()
-      if (id.startsWith(prefix))
-        starts.push(e)
-      else if (id.includes(prefix))
-        includes.push(e)
-    })
-    return starts.concat(includes)
+  format = (entry: FuncEntry): Suggestion => {
+    const { id, argstr, args, desc, ret } = entry
+    const argidsSnippet = this.fmtArgs(args)
+    const sret = ret ? ret.reduce((a, b) => `${a}, ${b}`) : ''
+    return {
+      label: id,
+      desc: desc,
+      snippet: `${id}${argidsSnippet}`,
+      detail: `${id}(${argstr || ''})${sret && (': ' + sret)}`
+    }
   }
 
-  format = (entry: FuncEntry) => {
-    // const { id, argstr, args, desc, ret } = entry
-    // const [ argids, argidsSnippet ] = this.fmtArgs(args)
-    // const sret = ret ? ret.reduce((a, b) => `${a}, ${b}`) : ''
-    // return {
-    //   displayText: `${id}${argids}`,
-    //   description: `${id}(${argstr || ''})${sret && (': ' + sret)}\n${desc}`,
-    //   leftLabel: this.ret && sret ? sret : null,
-    //   type: 'function',
-    //   snippet: `${id}${argidsSnippet}`
-    // }
-  }
-
-  fmtArgs(args: ArgEntry[] | undefined) {
-    // if (!args)
-    //   return [ '', '' ]
-    // const sp = this.space
-    // if (!this.opt)
-    //   args = args.filter(a => !a.opt)
-    // if (args.length == 0)
-    //   return [ '', '' ]
-    // const sargs = args.map(({ id }) => id)
-    // return [
-    //   sargs.reduce((a, b) => `${a}, ${b}`),
-    //   sargs.map((a, i) => `\${${i + 1}:${a}}`).reduce((a, b) => `${a},${sp}${b}`)
-    // ].map(s => `(${s})`)
+  fmtArgs(args?: ArgEntry[]): string {
+    if (!args)
+      return ''
+    const sp = this.space
+    if (!this.opt)
+      args = args.filter(a => !a.opt)
+    const snip = args.length ?
+      args.map(({ id }, i) => `\${${i + 1}:${id}}`)
+        .reduce((a, b) => `${a},${sp}${b}`) :
+      ''
+    return `(${snip})`
   }
 }
+
+const provider = new GlobalsProvider()
+
+export const getDisposable = () => vscode.languages.registerCompletionItemProvider('lua', {
+  provideCompletionItems(doc, pos, token, context) {
+    if (context.triggerCharacter)
+      return undefined
+    const sugs = provider.getSuggestions()
+    return sugs.map(s => {
+      const item = new vscode.CompletionItem(s.label, vscode.CompletionItemKind.Function)
+      item.documentation = s.desc
+      item.detail = s.detail
+      item.insertText = new vscode.SnippetString(s.snippet)
+      return item
+    })
+  }
+})

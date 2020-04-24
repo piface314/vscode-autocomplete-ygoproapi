@@ -1,28 +1,29 @@
-import { Classes, ConstEntry } from '../data'
+import * as vscode from 'vscode'
+import { Classes, ClsEntry } from '../data'
 
 
-export default class ClsProvider {
-  private PRIORITY = 6
-  private MIN_LEN = 2
-
-  constructor() {
-    
-  }
-
-  getSuggestions(/*options*/) {
-    // const { prefix } = options
-    // if (prefix.length >= this.MIN_LEN)
-    //   return this.match(prefix).map(e => this.format(e))
-	}
-
-  match(prefix: string): ConstEntry[] {
-    prefix = prefix.toLowerCase()
-    return Classes.filter(e => e.id.toLowerCase().startsWith(prefix))
-  }
-
-  format = (entry: ConstEntry) => ({
-    // text: entry.id,
-    // description: entry.desc,
-    // type: 'class'
-  })
+type Suggestion = {
+  label: string
+  desc: string
+  kind: vscode.CompletionItemKind
 }
+
+const format = (entry: ClsEntry): Suggestion => ({
+  label: entry.id,
+  desc: entry.desc,
+  kind: entry.module ?
+    vscode.CompletionItemKind.Module :
+    vscode.CompletionItemKind.Class
+})
+
+export const getDisposable = () => vscode.languages.registerCompletionItemProvider('lua', {
+  provideCompletionItems(doc, pos, token, context) {
+    if (context.triggerCharacter)
+      return undefined
+    return Classes.map(format).map(s => {
+      const item = new vscode.CompletionItem(s.label, s.kind)
+      item.documentation = s.desc
+      return item
+    })
+  }
+})

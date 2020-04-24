@@ -2335,6 +2335,11 @@
             "id": "forced",
             "type": "boolean",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Registers an Effect (Effect e) (usually an Effect created with Effect.CreateEffect()) to a Card (Card c), ... is a list of integers which Registers further effects in the utility.",
@@ -2362,7 +2367,7 @@
       },
       {
         "id": "GetCardEffect",
-        "argstr": "c: Card, [, effect_type: number]",
+        "argstr": "c: Card,  [, effect_type: number]",
         "args": [
           {
             "id": "c",
@@ -2580,7 +2585,7 @@
       },
       {
         "id": "ReleaseEffectRelation",
-        "argstr": "c: Card,e: Effect",
+        "argstr": "c: Card, e: Effect",
         "args": [
           {
             "id": "c",
@@ -2917,8 +2922,12 @@
       },
       {
         "id": "IsMSetable",
-        "argstr": "Card, ignore_count: boolean, e: Effect|nil[, min: number=0]",
+        "argstr": "d: Car, ignore_count: boolean, e: Effect|nil[, min: number=0]",
         "args": [
+          {
+            "id": "d",
+            "type": "Car"
+          },
           {
             "id": "ignore_count",
             "type": "boolean"
@@ -2929,7 +2938,8 @@
           },
           {
             "id": "min",
-            "type": "number"
+            "type": "number",
+            "opt": true
           }
         ],
         "desc": "Checks whether a card (Card c) can be Normal Set as a monster. Setting ignore_count to true makes it ignore the standard once per turn summon limit. If an effect (Effect e) is given, checks whether it can be Normal Summoned by that effect. The last value denotes the minimum tribute amount.",
@@ -3189,11 +3199,16 @@
       },
       {
         "id": "IsDiscardable",
-        "argstr": "Card[, reason: number=REASON_COST]",
+        "argstr": "d: Car[, reason: number=REASON_COST]",
         "args": [
           {
+            "id": "d",
+            "type": "Car"
+          },
+          {
             "id": "reason",
-            "type": "number"
+            "type": "number",
+            "opt": true
           }
         ],
         "desc": "Checks if a card (Card c) can be discarded for (int reason).",
@@ -4008,7 +4023,7 @@
       },
       {
         "id": "IsCanBeLinkMaterial",
-        "argstr": "c: Card, [linkc: Card, player: number]",
+        "argstr": "c: Card,  [linkc: Card, player: number]",
         "args": [
           {
             "id": "c",
@@ -4132,7 +4147,7 @@
       },
       {
         "id": "AddMonsterAttribute",
-        "argstr": "c: Card, extra_type: number, [attribute: number, race: number, level: number, atk: number, def: number]",
+        "argstr": "c: Card, extra_type: number,  [attribute: number, race: number, level: number, atk: number, def: number]",
         "args": [
           {
             "id": "c",
@@ -4300,7 +4315,7 @@
       },
       {
         "id": "CheckUniqueOnField",
-        "argstr": "c: Card,check_player: number",
+        "argstr": "c: Card, check_player: number",
         "args": [
           {
             "id": "c",
@@ -4318,7 +4333,7 @@
       },
       {
         "id": "ResetNegateEffect",
-        "argstr": "c: Card[, code1: number,...]",
+        "argstr": "c: Card[, code1: number, ...]",
         "args": [
           {
             "id": "c",
@@ -4328,13 +4343,18 @@
             "id": "code1",
             "type": "number",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Reset a card c affected by the effect of cards whose card number is code1, code2 ..."
       },
       {
         "id": "AssumeProperty",
-        "argstr": "c: Card,assume_type: number, assume_value: number",
+        "argstr": "c: Card, assume_type: number, assume_value: number",
         "args": [
           {
             "id": "c",
@@ -4748,8 +4768,17 @@
       },
       {
         "id": "IsSequence",
-        "argstr": "c,...",
-        "args": [],
+        "argstr": "c, ...",
+        "args": [
+          {
+            "id": "c",
+            "type": ""
+          },
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "Returns if a Card (Card c) is located at any of the sequences passed as arguments",
         "ret": [
           "boolean"
@@ -5013,6 +5042,8 @@
     "methods": [
       {
         "id": "CheckCountLimit",
+        "argstr": "",
+        "args": [],
         "desc": "",
         "ret": [
           "boolean"
@@ -5038,6 +5069,8 @@
       },
       {
         "id": "GlobalEffect",
+        "argstr": "",
+        "args": [],
         "desc": "Create a new effect object without owner",
         "ret": [
           "Effect"
@@ -5815,6 +5848,8 @@
     "methods": [
       {
         "id": "CreateGroup",
+        "argstr": "",
+        "args": [],
         "desc": "Create a new Group object",
         "ret": [
           "Group"
@@ -5863,6 +5898,11 @@
           {
             "id": "c",
             "type": "Card"
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Create a new Group object and populate it with cards (Card c, ...)",
@@ -5982,6 +6022,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Executes a function for each card in a group (Group g), function f should accept one parameter (e.g. f(c, ...), with c as each member of the group and ... can be any number of parameters)"
@@ -6001,6 +6045,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Create a new group with members from another group (Group g) filtered according to a function (function f). Excludes a card/group (Group/Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.",
@@ -6023,6 +6071,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Counts the amount of members of a group (Group g) which meets the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.",
@@ -6063,6 +6115,11 @@
             "id": "ex",
             "type": "Group|Card|nil",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Make a player (int player) select members of a group (Group g) which meets the function (function f), with a minimum and a maximum, then outputs the result as a new Group. Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true. If cancelable is true and the selection is canceled nil will be returned.",
@@ -6072,7 +6129,7 @@
       },
       {
         "id": "Select",
-        "argstr": "g: Group, player: number, min: number, max: number[, cancelable: boolean=false] ex: Group|Card|nil",
+        "argstr": "g: Group, player: number, min: number, max: number[, cancelable: boolean=false] Group|Card ex|nil",
         "args": [
           {
             "id": "g",
@@ -6094,10 +6151,6 @@
             "id": "cancelable",
             "type": "boolean",
             "opt": true
-          },
-          {
-            "id": "ex",
-            "type": "Group|Card|nil"
           }
         ],
         "desc": "Make a player (int player) select members of a group (Group g), with a minimum and a maximum, then outputs the result as a new Group. Excludes a card (Card ex) if not nil. If cancelable is true and the selection is canceled nil will be returned.",
@@ -6188,6 +6241,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Checks if at least a number (int count) of members of a group (Group g) meet the function (function f). Excludes a card (Card ex) if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true.",
@@ -6218,6 +6275,10 @@
           {
             "id": "max",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...). with c as each member of the group), and the return value should be integer.",
@@ -6252,6 +6313,10 @@
           {
             "id": "max",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Makes a player (int player) select members of a group (Group g) which results in a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result equal to (int sum). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.",
@@ -6274,6 +6339,10 @@
           {
             "id": "sum",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Checks if there is a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result greater than or equal to (int sum) in a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.",
@@ -6300,6 +6369,10 @@
           {
             "id": "sum",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Makes a player (int player) select members of a group (Group g) which results in a combination of cards, with a minimum and maximum, that has the sum of f(c,...) result greater than or equal to (int sum). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.",
@@ -6318,6 +6391,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Create a new group with members from another group (Group g) which has the minimum result from f(c,...). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer, if the group g have no element, that function will return nil.",
@@ -6337,6 +6414,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Create a new group with members from another group (Group g) which has the maximum result from f(c,...). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer, if the group g have no element, that function will return nil.",
@@ -6356,6 +6437,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Gets the sum of f(c,...) result from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.",
@@ -6374,6 +6459,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Gets the count of different f(c,...) results from all members of a group (Group g). Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the return value should be integer.",
@@ -6396,6 +6485,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Removes members of a group (Group g) that meets the function (function f). Excludes a card (Card ex) from removal if not nil. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and the card will be included if f(c,...) returns true."
@@ -6477,6 +6570,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Gets the first card found in a group (Group g) which f(c,...) returns true. Function f accepts at least one parameter (f(c,...), with c as each member of the group), and must return a boolean.",
@@ -6495,6 +6592,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "split group g into 2 groups, first is card that match the function f and the second one are the other cards.",
@@ -6523,8 +6624,21 @@
       },
       {
         "id": "CheckSameProperty",
-        "argstr": "g,f,...",
-        "args": [],
+        "argstr": "g, f, ...",
+        "args": [
+          {
+            "id": "g",
+            "type": ""
+          },
+          {
+            "id": "f",
+            "type": ""
+          },
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "Returns if the members of (Group  g) share a same property, provided in (Function f)",
         "ret": [
           "boolean"
@@ -6595,6 +6709,8 @@
       },
       {
         "id": "GetTurnPlayer",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the turn's player",
         "ret": [
           "number"
@@ -6602,6 +6718,8 @@
       },
       {
         "id": "GetTurnCount",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the turn count",
         "ret": [
           "number"
@@ -6701,7 +6819,7 @@
       },
       {
         "id": "Destroy",
-        "argstr": "targets: Card|Group, reason: number[ ,dest: number = LOCATION_GRAVE]",
+        "argstr": "targets: Card|Group, reason: number[ , dest: number = LOCATION_GRAVE]",
         "args": [
           {
             "id": "targets",
@@ -6724,7 +6842,7 @@
       },
       {
         "id": "Remove",
-        "argstr": "targets: Card|Group, pos: number, reason: number[,player: number]",
+        "argstr": "targets: Card|Group, pos: number, reason: number[, player: number]",
         "args": [
           {
             "id": "targets",
@@ -6848,8 +6966,12 @@
       },
       {
         "id": "Sendto",
-        "argstr": "Card|Group, location: number, reason: number,[pos: number=POS_FACEUP, player: number=PLAYER_NONE, sequence: number=0]",
+        "argstr": "p: Card|Grou, location: number, reason: number, [pos: number=POS_FACEUP, player: number=PLAYER_NONE, sequence: number=0]",
         "args": [
+          {
+            "id": "p",
+            "type": "Card|Grou"
+          },
           {
             "id": "location",
             "type": "number"
@@ -6880,6 +7002,8 @@
       },
       {
         "id": "GetOperatedGroup",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the last group of operated cards (from last call of some functions, ex. calling this after Duel.Draw would return a group of the drawn cards)",
         "ret": [
           "Group"
@@ -6887,7 +7011,7 @@
       },
       {
         "id": "Summon",
-        "argstr": "player: number, c: Card, ignore_count: boolean, e: Effect|nil[, min=0]",
+        "argstr": "player: number, c: Card, ignore_count: boolean, e: Effect|nil[, n: mi=0]",
         "args": [
           {
             "id": "player",
@@ -6904,6 +7028,11 @@
           {
             "id": "e",
             "type": "Effect|nil"
+          },
+          {
+            "id": "n",
+            "type": "mi",
+            "opt": true
           }
         ],
         "desc": "Makes a player (int player) Normal Summons a card (Card c) using the Normal Summon procedure that the card has. If (ignore_count) is set to true, the Summon would not count towards the standard limit of Normal Summon/Set. If an effect (Effect e) is provided, the Normal Summon is counted as a Summon by that effect. If (min) is greater than 0, the Summon proc must need that amount or more tributes."
@@ -7040,8 +7169,19 @@
         "desc": "Loads into the current enviroment (duel/puzzle) (file_name)'s script."
       },
       {
+        "id": "LoadCardScript",
+        "argstr": "code: string|number",
+        "args": [
+          {
+            "id": "code",
+            "type": "string|number"
+          }
+        ],
+        "desc": "Loads into the current enviroment (duel/puzzle) the script from card which id is int code. If a string is used, it must be \"c'code'.lua\""
+      },
+      {
         "id": "MSet",
-        "argstr": "player: number, c: Card, ignore_count: boolean, e: Effect|nil[, min=0]",
+        "argstr": "player: number, c: Card, ignore_count: boolean, e: Effect|nil[, n: mi=0]",
         "args": [
           {
             "id": "player",
@@ -7058,6 +7198,11 @@
           {
             "id": "e",
             "type": "Effect|nil"
+          },
+          {
+            "id": "n",
+            "type": "mi",
+            "opt": true
           }
         ],
         "desc": "A player Sets a card (Card c) using Normal Summon proc that the card has. if ignore_count is true, the Set would not count towards the standard limit of Normal Summon/Set. If an effect (Effect e) is provided, the Normal Set is counted as a Set by that effect. if min>0 then the Set proc must need that amount or more tributes."
@@ -7216,6 +7361,8 @@
       },
       {
         "id": "SpecialSummonComplete",
+        "argstr": "",
+        "args": [],
         "desc": "Completes Special Summons conducted with Duel.SpecialSummonStep",
         "ret": [
           "void|number"
@@ -7581,7 +7728,7 @@
       },
       {
         "id": "CheckTribute",
-        "argstr": "c: card, min: number, max: number, mg: group, tp: number, zone",
+        "argstr": "c: card, min: number, max: number, mg: group, tp: number, e: zon",
         "args": [
           {
             "id": "c",
@@ -7602,6 +7749,10 @@
           {
             "id": "tp",
             "type": "number"
+          },
+          {
+            "id": "e",
+            "type": "zon"
           }
         ],
         "desc": ""
@@ -7717,6 +7868,8 @@
       },
       {
         "id": "GetEnvironment",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the environment code for the applied field card (the same as the Field Spell's code, usually). Returns the code, then the controlling player. Prioritizes the first player.",
         "ret": [
           "number",
@@ -7835,6 +7988,8 @@
       },
       {
         "id": "RDComplete",
+        "argstr": "",
+        "args": [],
         "desc": "Complete Damage/Recover step (for simultaneous damage/recovery)"
       },
       {
@@ -7871,6 +8026,8 @@
       },
       {
         "id": "EquipComplete",
+        "argstr": "",
+        "args": [],
         "desc": "Concludes a series of Equips (Always used with 'is_step = true' in Duel.Equip())"
       },
       {
@@ -8059,6 +8216,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Makes (int player) Discard between (int min) and (int max) cards from their hand for which (function f) returns true, except (Group|Card ex), for (int reason)",
@@ -8068,8 +8229,14 @@
       },
       {
         "id": "DisableShuffleCheck",
-        "argstr": "[disable=true]",
-        "args": [],
+        "argstr": "[e: disabl=true]",
+        "args": [
+          {
+            "id": "e",
+            "type": "disabl",
+            "opt": true
+          }
+        ],
         "desc": "If disable is true, makes an action that adds/removes a card(s) from/to Deck/hand not trigger the shuffle check at the end of the the current routine execution. Putting false would revert to normal behavior."
       },
       {
@@ -8275,6 +8442,8 @@
       },
       {
         "id": "BreakEffect",
+        "argstr": "",
+        "args": [],
         "desc": "Separates an effect for the purposes of timing (Reflects the effects of the conjunctives \"then\" and \"also after that\")"
       },
       {
@@ -8453,6 +8622,8 @@
       },
       {
         "id": "GetCurrentChain",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the current chain",
         "ret": [
           "number"
@@ -8465,6 +8636,10 @@
           {
             "id": "chainc",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Gets the chain number (int chainc), or current chain if it's 0, various informations (described by constant group CHAININFO_)",
@@ -8474,6 +8649,8 @@
       },
       {
         "id": "GetFirstTarget",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the current chain's first target card (first here doesn't mean \"first when selected\", so don't rely on this for multi-target effect)",
         "ret": [
           "Card",
@@ -8482,6 +8659,8 @@
       },
       {
         "id": "GetCurrentPhase",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the current Phase of the game (corresponds to PHASE_x in constants.lua)",
         "ret": [
           "number"
@@ -8517,6 +8696,8 @@
       },
       {
         "id": "IsAttackCostPaid",
+        "argstr": "",
+        "args": [],
         "desc": "Return the status of payment of attack cost for a card (e.g. Mist Valley Falcon). Return 2 means it has not been paid.",
         "ret": [
           "number"
@@ -8524,6 +8705,8 @@
       },
       {
         "id": "IsDamageCalculated",
+        "argstr": "",
+        "args": [],
         "desc": "Returns true if damage has been calculated during the current (or previous) damage calculation, otherwise returns false",
         "ret": [
           "boolean"
@@ -8531,6 +8714,8 @@
       },
       {
         "id": "GetAttacker",
+        "argstr": "",
+        "args": [],
         "desc": "Get the attacking card (or nil if there is no attacker)",
         "ret": [
           "Card"
@@ -8538,6 +8723,8 @@
       },
       {
         "id": "GetAttackTarget",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the attack target card (or nil if there's no attack target/the attack is a direct attack)",
         "ret": [
           "Card|nil"
@@ -8545,6 +8732,8 @@
       },
       {
         "id": "NegateAttack",
+        "argstr": "",
+        "args": [],
         "desc": "Negates the current attack. Has no effect if the game has confirmed battle (about to enter Damage Step)",
         "ret": [
           "boolean"
@@ -8564,6 +8753,8 @@
       },
       {
         "id": "Readjust",
+        "argstr": "",
+        "args": [],
         "desc": "Makes the game do the adjustments ( win, disable, control, self destroy, equip, position, trap monster). Calling this while adjusting (most likely, in EVENT_ADJUST) four times with the same card (calling this will raise EVENT_ADJUST at the end, so it is possible to loop) will make the card instantly destroyed."
       },
       {
@@ -8663,6 +8854,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Gets all cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)",
@@ -8693,6 +8888,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Get the number of cards in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)",
@@ -8723,6 +8922,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Get the first card in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)",
@@ -8757,6 +8960,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Checks if (int count) cards exist in locations (int s) (on (int player)'s side of the field) and (int o) (on their opponent's) for which (function f) returns true, except (Card ex)",
@@ -8766,7 +8973,7 @@
       },
       {
         "id": "SelectMatchingCard",
-        "argstr": "sel_player: number, f: function, player: number, s: number, o: number, min: number, max: number[, cancelable=false], ex: Group|Card|nil, ...",
+        "argstr": "sel_player: number, f: function, player: number, s: number, o: number, min: number, max: number[, e: cancelabl=false], ex: Group|Card|nil, ...",
         "args": [
           {
             "id": "sel_player",
@@ -8797,8 +9004,18 @@
             "type": "number"
           },
           {
+            "id": "e",
+            "type": "cancelabl",
+            "opt": true
+          },
+          {
             "id": "ex",
             "type": "Group|Card|nil",
+            "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
             "opt": true
           }
         ],
@@ -8905,6 +9122,11 @@
             "id": "ex",
             "type": "Group|Card|nil",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Check if there is a monster that can be used as tribute from the int player, that satisfies function, having a min of the count specified with the exception of some card/group if specified, ... are extra arguments.",
@@ -8914,7 +9136,7 @@
       },
       {
         "id": "CheckReleaseGroupCost",
-        "argstr": "player: number, f: function, count: number, use_hand: boolean, spcheck: function, ex: card|group|nil,...",
+        "argstr": "player: number, f: function, count: number, use_hand: boolean, spcheck: function, ex: card|group|nil, ...",
         "args": [
           {
             "id": "player",
@@ -8939,6 +9161,10 @@
           {
             "id": "ex",
             "type": "card|group|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Check if the player can tribute to activate effect a monster, satisfying a specific function",
@@ -9000,6 +9226,11 @@
           {
             "id": "ex",
             "type": "Group|Card|nil",
+            "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
             "opt": true
           }
         ],
@@ -9067,6 +9298,11 @@
             "id": "ex",
             "type": "Group|Card|nil",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Selects monsters to be tributed by int sel_player, that satisfies function f, within a amount betwen int min and int max (include these values), with exception of some card/group, if any, ... is extra arguments. If cancelable is true and the selection is canceled nil will be returned.",
@@ -9133,6 +9369,11 @@
             "id": "ex",
             "type": "Group|Card|nil",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Same as Duel.SelectReleaseGroup, except that it includes hand too.",
@@ -9142,7 +9383,7 @@
       },
       {
         "id": "SelectReleaseGroupCost",
-        "argstr": "player: number, f: function, min: number, max: number, use_hand: boolean, specialchk: function, ex: card|group|nil,...",
+        "argstr": "player: number, f: function, min: number, max: number, use_hand: boolean, specialchk: function, ex: card|group|nil, ...",
         "args": [
           {
             "id": "player",
@@ -9171,6 +9412,10 @@
           {
             "id": "ex",
             "type": "card|group|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "select a group of cards to be tributed as cost by a int player that satisfies function f, needing to select from a int min number of card to a int max number of card, using or not the hand (bool use_hand), if a function specialchk is specified it need to satisfies that as well (for example aux.ChkfMMZ in case you need a free space later), with some exception and extra arguments.",
@@ -9218,6 +9463,8 @@
       },
       {
         "id": "GrabSelectedCard ",
+        "argstr": "",
+        "args": [],
         "desc": ""
       },
       {
@@ -9279,6 +9526,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Returns the number of targets, except (Group/Card ex), that match (function f), taking (int player) as the referential player, in locations defined in (int s) for your cards and (int o) for opponent's.",
@@ -9313,6 +9564,10 @@
           {
             "id": "ex",
             "type": "Group|Card|nil"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Returns if that are at least (int count) targets, except (Group/Card ex) that match (function f), taking (int player) as the referential player, in locations defined in (int s) for your cards and (int o) for opponent's.",
@@ -9360,6 +9615,11 @@
           {
             "id": "ex",
             "type": "Group|Card|nil",
+            "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
             "opt": true
           }
         ],
@@ -9637,6 +9897,8 @@
       },
       {
         "id": "ClearTargetCard",
+        "argstr": "",
+        "args": [],
         "desc": "Removes the targets defined"
       },
       {
@@ -9652,8 +9914,13 @@
       },
       {
         "id": "SetTargetParam",
-        "argstr": "number",
-        "args": [],
+        "argstr": "r: numbe",
+        "args": [
+          {
+            "id": "r",
+            "type": "numbe"
+          }
+        ],
         "desc": "Defines the parameter"
       },
       {
@@ -9992,7 +10259,7 @@
       },
       {
         "id": "SelectOption",
-        "argstr": "player: number[,confirm_dialog: boolean=true], desc1: number, ...",
+        "argstr": "player: number[, confirm_dialog: boolean=true], desc1: number, ...",
         "args": [
           {
             "id": "player",
@@ -10007,6 +10274,11 @@
             "id": "desc1",
             "type": "number",
             "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
+            "opt": true
           }
         ],
         "desc": "Allows (int player) to choose between any number of options, starting with (int desc1). Returns the index of the chosen option, e.g. desc1 returns 0, the second option returns 1, etc. If confirm_dialog is set to false, the announce will be performed, but the optselected hint wont' be shown",
@@ -10016,6 +10288,8 @@
       },
       {
         "id": "SelectSequence",
+        "argstr": "",
+        "args": [],
         "desc": ""
       },
       {
@@ -10081,6 +10355,10 @@
           {
             "id": "res",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": ""
@@ -10092,6 +10370,10 @@
           {
             "id": "res",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": ""
@@ -10142,7 +10424,7 @@
       },
       {
         "id": "AnnounceLevel",
-        "argstr": "player: number[,min: number = 1,max: number=12, exception: number=nil,...]",
+        "argstr": "player: number[, min: number = 1, max: number=12, exception: number=nil, ...]",
         "args": [
           {
             "id": "player",
@@ -10161,6 +10443,11 @@
           {
             "id": "exception",
             "type": "number",
+            "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
             "opt": true
           }
         ],
@@ -10214,6 +10501,10 @@
           {
             "id": "number",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Asks (int player) to announce a number found amongst (int number)s. Returns the chosen number and its index amongst the options",
@@ -10279,6 +10570,8 @@
       },
       {
         "id": "GetCoinResult",
+        "argstr": "",
+        "args": [],
         "desc": "Returns multiple values per each coin flipped",
         "ret": [
           "number",
@@ -10290,6 +10583,8 @@
       },
       {
         "id": "GetDiceResult",
+        "argstr": "",
+        "args": [],
         "desc": "Returns the values per dice roled",
         "ret": [
           "number",
@@ -10306,6 +10601,10 @@
           {
             "id": "res",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Changes the result of a coin flip to the result provided"
@@ -10317,6 +10616,10 @@
           {
             "id": "res",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Changes the result of a dice roll to the result provided"
@@ -10687,6 +10990,8 @@
       },
       {
         "id": "CheckChainUniqueness",
+        "argstr": "",
+        "args": [],
         "desc": "Checks if there is no card with the same name in the current chain",
         "ret": [
           "boolean"
@@ -10703,6 +11008,10 @@
           {
             "id": "activity_type",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Get the number of times (int player) has performed activities of (int activity_type)",
@@ -10713,6 +11022,8 @@
       },
       {
         "id": "CheckPhaseActivity",
+        "argstr": "",
+        "args": [],
         "desc": "",
         "ret": [
           "boolean"
@@ -10775,6 +11086,8 @@
       },
       {
         "id": "IsAbleToEnterBP",
+        "argstr": "",
+        "args": [],
         "desc": "Checks if the player can enter BP this turn.",
         "ret": [
           "boolean"
@@ -10861,7 +11174,7 @@
       },
       {
         "id": "GetRandomNumber",
-        "argstr": "[min: number = 0,]max: number",
+        "argstr": "[min: number = 0, ]max: number",
         "args": [
           {
             "id": "min",
@@ -10966,6 +11279,8 @@
       },
       {
         "id": "GetMasterRule",
+        "argstr": "",
+        "args": [],
         "desc": "Gets the master rule the current duel is being played under (eg. obsolute rules)",
         "ret": [
           "number"
@@ -10977,7 +11292,7 @@
       },
       {
         "id": "GetLocationCountFromEx",
-        "argstr": "player: number, [rplayer: number, sg: group|card, lc: card]",
+        "argstr": "player: number,  [rplayer: number, sg: group|card, lc: card]",
         "args": [
           {
             "id": "player",
@@ -11005,6 +11320,8 @@
       },
       {
         "id": "AssumeReset",
+        "argstr": "",
+        "args": [],
         "desc": "Manually resets assume effects. Usually used in syncro summon. (eg: it resets the applied effect of \"Influence Dragon (Anime)\" on the other materials in the Synchro Summon.)"
       },
       {
@@ -11042,6 +11359,8 @@
       },
       {
         "id": "Activate",
+        "argstr": "",
+        "args": [],
         "desc": "Activates a card/effect"
       },
       {
@@ -11108,7 +11427,7 @@
       },
       {
         "id": "CheckReleaseGroupSummon",
-        "argstr": "c: card, player: number, e: effect, fil: function, min: number, max: number, last: function,...",
+        "argstr": "c: card, player: number, e: effect, fil: function, min: number, max: number, last: function, ...",
         "args": [
           {
             "id": "c",
@@ -11137,6 +11456,10 @@
           {
             "id": "last",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -11146,7 +11469,7 @@
       },
       {
         "id": "SelectReleaseGroupSummon",
-        "argstr": "c: card, player: number, e: effect, fil: function, min: number,  max: number, last: function,...",
+        "argstr": "c: card, player: number, e: effect, fil: function, min: number, max: number, last: function, ...",
         "args": [
           {
             "id": "c",
@@ -11175,6 +11498,10 @@
           {
             "id": "last",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -11184,8 +11511,37 @@
       },
       {
         "id": "CheckReleaseGroupCost",
-        "argstr": "tp,f,ct,use_hand,specialchk,ex,...",
-        "args": [],
+        "argstr": "p: t, f, t: c, d: use_han, k: specialch, x: e, ...",
+        "args": [
+          {
+            "id": "p",
+            "type": "t"
+          },
+          {
+            "id": "f",
+            "type": ""
+          },
+          {
+            "id": "t",
+            "type": "c"
+          },
+          {
+            "id": "d",
+            "type": "use_han"
+          },
+          {
+            "id": "k",
+            "type": "specialch"
+          },
+          {
+            "id": "x",
+            "type": "e"
+          },
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "",
         "ret": [
           "boolean"
@@ -11193,8 +11549,41 @@
       },
       {
         "id": "SelectReleaseGroupCost",
-        "argstr": "tp,f,minc,maxc,use_hand,specialchk,ex,...",
-        "args": [],
+        "argstr": "p: t, f, c: min, c: max, d: use_han, k: specialch, x: e, ...",
+        "args": [
+          {
+            "id": "p",
+            "type": "t"
+          },
+          {
+            "id": "f",
+            "type": ""
+          },
+          {
+            "id": "c",
+            "type": "min"
+          },
+          {
+            "id": "c",
+            "type": "max"
+          },
+          {
+            "id": "d",
+            "type": "use_han"
+          },
+          {
+            "id": "k",
+            "type": "specialch"
+          },
+          {
+            "id": "x",
+            "type": "e"
+          },
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "",
         "ret": [
           "group"
@@ -11320,6 +11709,8 @@
       },
       {
         "id": "NULL",
+        "argstr": "",
+        "args": [],
         "desc": "Function that returns nil",
         "ret": [
           "nil"
@@ -11327,6 +11718,8 @@
       },
       {
         "id": "TRUE",
+        "argstr": "",
+        "args": [],
         "desc": "Function that returns true. Can be used to return a whole group of cards in a certain location",
         "ret": [
           "boolean"
@@ -11334,6 +11727,8 @@
       },
       {
         "id": "FALSE",
+        "argstr": "",
+        "args": [],
         "desc": "Function that returns false",
         "ret": [
           "boolean"
@@ -11342,7 +11737,12 @@
       {
         "id": "AND",
         "argstr": "...)(...",
-        "args": [],
+        "args": [
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with \"and\". The second set of (...) is applied automatically when used as a filter.",
         "ret": [
           "boolean"
@@ -11351,7 +11751,12 @@
       {
         "id": "OR",
         "argstr": "...)(...",
-        "args": [],
+        "args": [
+          {
+            "id": "...",
+            "type": ""
+          }
+        ],
         "desc": "First (...) is a list of functions which will be used to check the parameters in the second set of (...), separated with \"or\". The second set of (...) is applied automatically when used as a filter.",
         "ret": [
           "boolean"
@@ -11373,6 +11778,8 @@
       },
       {
         "id": "BeginPuzzle",
+        "argstr": "",
+        "args": [],
         "desc": "Sets up the beginning of a puzzle, causing the player to lose during the End Phase"
       },
       {
@@ -11473,6 +11880,10 @@
           {
             "id": "value",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Used in SetTarget filters (with parameters (e,c)) to check a function and its (...) parameters is equal to the inputted (int value).",
@@ -11487,6 +11898,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Used in SetTarget filters (with parameters (e,c)) to check a function and its (...) parameters",
@@ -11505,6 +11920,10 @@
           {
             "id": "value",
             "type": "number"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Used in filters (with parameter (Card c)) to check a function and its (...) parameters is equal to the inputted (int value).",
@@ -11537,6 +11956,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Used in filters (with parameter (Card c)) to check a function and its (...) parameters",
@@ -12213,15 +12636,15 @@
       },
       {
         "id": "NecroValleyFilter",
-        "argstr": "f: function)(target: Card, ...",
+        "argstr": "f: function)(Card target, ...",
         "args": [
           {
             "id": "f",
             "type": "function"
           },
           {
-            "id": "target",
-            "type": "Card"
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "Filter check \"not affected by Necrovalley\" in addition to its own filter, if used as function filter, (Card target, ...) is defined by default",
@@ -12576,15 +12999,11 @@
       },
       {
         "id": "ChkfMMZ",
-        "argstr": "sumcount: number)(sg: Group, e: Effect, tp: number, mg: Group",
+        "argstr": "sumcount: number)(Group sg, e: Effect, tp: number, mg: Group",
         "args": [
           {
             "id": "sumcount",
             "type": "number"
-          },
-          {
-            "id": "sg",
-            "type": "Group"
           },
           {
             "id": "e",
@@ -12652,7 +13071,7 @@
       },
       {
         "id": "MainAndExtraSpSummonLoop",
-        "argstr": "func: function|nil, sumtype: number, sump: number, targetp: number, nocheck: boolean, nolimit: boolean, pos: number, mmz: number, emz: number)(e: Effect, tp: number, eg: Group, ep: number,ev: number, re: Effect, r: number, rp: number, sg: Group",
+        "argstr": "func: function|nil, sumtype: number, sump: number, targetp: number, nocheck: boolean, nolimit: boolean, pos: number, mmz: number, emz: number)(Effect e, tp: number, eg: Group, ep: number, ev: number, re: Effect, r: number, rp: number, sg: Group",
         "args": [
           {
             "id": "func",
@@ -12689,10 +13108,6 @@
           {
             "id": "emz",
             "type": "number"
-          },
-          {
-            "id": "e",
-            "type": "Effect"
           },
           {
             "id": "tp",
@@ -13009,8 +13424,13 @@
       },
       {
         "id": "MaleficUniqueFilter",
-        "argstr": "cc",
-        "args": [],
+        "argstr": "c: c",
+        "args": [
+          {
+            "id": "c",
+            "type": "c"
+          }
+        ],
         "desc": "Used as filter for the uniqueness on field with the \"Malefic\" monsters",
         "ret": [
           "function"
@@ -13018,8 +13438,21 @@
       },
       {
         "id": "AddMaleficSummonProcedure",
-        "argstr": "c,code,loc",
-        "args": [],
+        "argstr": "c, e: cod, c: lo",
+        "args": [
+          {
+            "id": "c",
+            "type": ""
+          },
+          {
+            "id": "e",
+            "type": "cod"
+          },
+          {
+            "id": "c",
+            "type": "lo"
+          }
+        ],
         "desc": "Procedure for \"Malefic\" monsters' Special Summon (also includes handling of \"Malefic Paradox Gear\"'s effect)",
         "ret": [
           "function"
@@ -13027,8 +13460,17 @@
       },
       {
         "id": "MaleficSummonFilter",
-        "argstr": "c,cd",
-        "args": [],
+        "argstr": "c, d: c",
+        "args": [
+          {
+            "id": "c",
+            "type": ""
+          },
+          {
+            "id": "d",
+            "type": "c"
+          }
+        ],
         "desc": "Filter used with AddMaleficSummonProcedure. Returns if card (Card c)'s ID is (cd) and if c can be banished as cost",
         "ret": [
           "function"
@@ -13036,8 +13478,17 @@
       },
       {
         "id": "MaleficSummonSubstitute",
-        "argstr": "c,cd",
-        "args": [],
+        "argstr": "c, d: c",
+        "args": [
+          {
+            "id": "c",
+            "type": ""
+          },
+          {
+            "id": "d",
+            "type": "c"
+          }
+        ],
         "desc": "Used with the Summoning Procedure of \"Malefic\" monsters. Checks for the effect of \"Malefic Paradox Gear\"",
         "ret": [
           "function"
@@ -13045,8 +13496,17 @@
       },
       {
         "id": "MaleficSummonCondition",
-        "argstr": "cd,loc",
-        "args": [],
+        "argstr": "d: c, c: lo",
+        "args": [
+          {
+            "id": "d",
+            "type": "c"
+          },
+          {
+            "id": "c",
+            "type": "lo"
+          }
+        ],
         "desc": "Auxiliary function for the summoning procedure of \"Malefic\" monsters. Checks if the player has the zone to summon and the appropriate monster (cd) to banish.",
         "ret": [
           "function"
@@ -13054,8 +13514,17 @@
       },
       {
         "id": "MaleficSummonOperation",
-        "argstr": "cd,loc",
-        "args": [],
+        "argstr": "d: c, c: lo",
+        "args": [
+          {
+            "id": "d",
+            "type": "c"
+          },
+          {
+            "id": "c",
+            "type": "lo"
+          }
+        ],
         "desc": "Auxiliary function to handle the summoning procedure of \"Malefic\" monsters. Performs the actual summon of the monster by removing the appropriate monster.",
         "ret": [
           "function "
@@ -13063,8 +13532,13 @@
       },
       {
         "id": "zptfilter",
-        "argstr": "filter",
-        "args": [],
+        "argstr": "r: filte",
+        "args": [
+          {
+            "id": "r",
+            "type": "filte"
+          }
+        ],
         "desc": "Used as filter for effects that check \"if [filter] monster is Special Summoned to a zone this card points to\". Also includes non-trivial handling of self-destructing effects of \"Burning Abyss\" monsters.",
         "ret": [
           "boolean"
@@ -13072,8 +13546,13 @@
       },
       {
         "id": "zptcon",
-        "argstr": "filter",
-        "args": [],
+        "argstr": "r: filte",
+        "args": [
+          {
+            "id": "r",
+            "type": "filte"
+          }
+        ],
         "desc": "Used as condition for effects that check \"if a [filter] monster is Special Summoned to a zone this card points to\". Includes non-trivial handling of self-destructing Burning Abyss monsters. tp is passed to check control.",
         "ret": [
           "boolean"
@@ -13082,7 +13561,12 @@
       {
         "id": "WitchcrafterDiscardFilter",
         "argstr": "c",
-        "args": [],
+        "args": [
+          {
+            "id": "c",
+            "type": ""
+          }
+        ],
         "desc": "Auxiliary function for the discard cost of \"Witchcrafter\" monsters. Returns if (Card c) can be either sent to the GY as a cost or has EFFECT_WITCHCRAFT_REPLACE.",
         "ret": [
           "boolean"
@@ -13090,8 +13574,13 @@
       },
       {
         "id": "WitchcrafterDiscardGroup",
-        "argstr": "minc",
-        "args": [],
+        "argstr": "c: min",
+        "args": [
+          {
+            "id": "c",
+            "type": "min"
+          }
+        ],
         "desc": "Auxiliary function for the discard cost of \"Witchcrafter\" monsters. Returns if there is a card with EFFECT_WITCHCRAFTER_REPLACE, that can be used as the whole cost, of if there is a (minc) number of cards to use as cost,  minc is the ammount the effect requires to discard.",
         "ret": [
           "boolean"
@@ -13099,8 +13588,21 @@
       },
       {
         "id": "WitchcrafterDiscardCost",
-        "argstr": "f,minc,maxc",
-        "args": [],
+        "argstr": "f, c: min, c: max",
+        "args": [
+          {
+            "id": "f",
+            "type": ""
+          },
+          {
+            "id": "c",
+            "type": "min"
+          },
+          {
+            "id": "c",
+            "type": "max"
+          }
+        ],
         "desc": "Auxiliary function for the discard cost of \"Witchcrafter\" monsters. Performs the actual discard part, considering a minimum (minc) and maximum (maxc) amount of cards to discard. It also handles cards with EFFECT_WITCHCRAFTER_REPLACE, setting the reason for REASON_COST for those, or REASON_COST+REASON_DISCARD if a card is sent from hand instead."
       },
       {
@@ -13176,7 +13678,7 @@
       },
       {
         "id": "ToHandOrElse",
-        "argstr": "c: card, player: number, [check: function, oper: function, str],...",
+        "argstr": "c: card, player: number,  [check: function, oper: function, r: st], ...",
         "args": [
           {
             "id": "c",
@@ -13193,6 +13695,16 @@
           {
             "id": "oper",
             "type": "function",
+            "opt": true
+          },
+          {
+            "id": "r",
+            "type": "st",
+            "opt": true
+          },
+          {
+            "id": "...",
+            "type": "",
             "opt": true
           }
         ],
@@ -13211,7 +13723,7 @@
       },
       {
         "id": "RegisterClientHint",
-        "argstr": "c: Card, property_code: number, reg: number.player, s: number, o: number, str, reset_code: number",
+        "argstr": "c: Card, property_code: number, reg: number.player, s: number, o: number, r: st, reset_code: number",
         "args": [
           {
             "id": "c",
@@ -13234,6 +13746,10 @@
             "type": "number"
           },
           {
+            "id": "r",
+            "type": "st"
+          },
+          {
             "id": "reset_code",
             "type": "number"
           }
@@ -13242,11 +13758,43 @@
       },
       {
         "id": "PlayFieldSpell",
-        "argstr": "c: Card,e,tp,eg,ep,ev,re,r,rp",
+        "argstr": "c: Card, e, p: t, g: e, p: e, v: e, e: r, r, p: r",
         "args": [
           {
             "id": "c",
             "type": "Card"
+          },
+          {
+            "id": "e",
+            "type": ""
+          },
+          {
+            "id": "p",
+            "type": "t"
+          },
+          {
+            "id": "g",
+            "type": "e"
+          },
+          {
+            "id": "p",
+            "type": "e"
+          },
+          {
+            "id": "v",
+            "type": "e"
+          },
+          {
+            "id": "e",
+            "type": "r"
+          },
+          {
+            "id": "r",
+            "type": ""
+          },
+          {
+            "id": "p",
+            "type": "r"
           }
         ],
         "desc": "Activates a field spell Card \"c\". Already handles interactions with Field Spells that are already face up, rules for only 1 Field Spell at time, checks for costs and activated effects of the field spell and als the interaction with Ancient Pixie Dragon.",
@@ -13259,6 +13807,10 @@
         "argstr": "s, func: function",
         "args": [
           {
+            "id": "s",
+            "type": ""
+          },
+          {
             "id": "func",
             "type": "function"
           }
@@ -13267,8 +13819,25 @@
       },
       {
         "id": "EvilHeroLimit",
-        "argstr": "e,se,sp,st",
-        "args": [],
+        "argstr": "e, e: s, p: s, t: s",
+        "args": [
+          {
+            "id": "e",
+            "type": ""
+          },
+          {
+            "id": "e",
+            "type": "s"
+          },
+          {
+            "id": "p",
+            "type": "s"
+          },
+          {
+            "id": "t",
+            "type": "s"
+          }
+        ],
         "desc": "Default SetValue for \"Evil HERO\" monsters's effect EFFECT_SPSUMMON_CONDITION. Must be used due to the existance of \"Supreme King Castle\"",
         "ret": [
           "number"
@@ -13291,7 +13860,7 @@
             "type": "effect"
           }
         ],
-        "desc": "",
+        "desc": "Auxiliary function called by \"Duel.CheckReleaseGroupSummon\" and Duel.SelectReleaseGroupSummon\".",
         "ret": [
           "boolean"
         ]
@@ -13313,7 +13882,7 @@
             "type": "number"
           }
         ],
-        "desc": "",
+        "desc": "Auxiliary function called by \"Duel.CheckReleaseGroupSummon\" and Duel.SelectReleaseGroupSummon\".",
         "ret": [
           "number"
         ]
@@ -13335,14 +13904,14 @@
             "type": "function"
           }
         ],
-        "desc": "",
+        "desc": "Auxiliary function called by \"Duel.SelectReleaseGroupSummon\".",
         "ret": [
           "boolean"
         ]
       },
       {
         "id": "CheckZonesReleaseSummonCheckSelection",
-        "argstr": "must: group, oneof: group,checkfunc: function",
+        "argstr": "must: group, oneof: group, checkfunc: function",
         "args": [
           {
             "id": "must",
@@ -13364,7 +13933,7 @@
       },
       {
         "id": "ReleaseCostFilter",
-        "argstr": "c: card, f: function,...",
+        "argstr": "c: card, f: function, ...",
         "args": [
           {
             "id": "c",
@@ -13373,6 +13942,10 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -13382,7 +13955,7 @@
       },
       {
         "id": "ReleaseCheckSingleUse",
-        "argstr": "sg: group,player: number, exg: group",
+        "argstr": "sg: group, player: number, exg: group",
         "args": [
           {
             "id": "sg",
@@ -13448,7 +14021,7 @@
       },
       {
         "id": "RelCheckRecursive",
-        "argstr": "c: card, player: number, sg: group, mg: group, exg: group, mustg: group, count: number, min: number, specialchk: function,...",
+        "argstr": "c: card, player: number, sg: group, mg: group, exg: group, mustg: group, count: number, min: number, specialchk: function, ...",
         "args": [
           {
             "id": "c",
@@ -13485,6 +14058,10 @@
           {
             "id": "specialchk",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -13494,7 +14071,7 @@
       },
       {
         "id": "RelCheckGoal",
-        "argstr": "player: number, sg: group, exg: group, mustg: group, count: number, min: number, specialchk: function,...",
+        "argstr": "player: number, sg: group, exg: group, mustg: group, count: number, min: number, specialchk: function, ...",
         "args": [
           {
             "id": "player",
@@ -13523,6 +14100,10 @@
           {
             "id": "specialchk",
             "type": "function"
+          },
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -13539,7 +14120,7 @@
             "type": "number"
           }
         ],
-        "desc": "Helpers to print hints for attribute-related cards such as Cynet Codec",
+        "desc": "Auxiliary function to help printing hints for attribute-related cards such as Cynet Codec",
         "ret": [
           "table"
         ]
@@ -13565,6 +14146,20 @@
           {
             "id": "number",
             "type": "number"
+          }
+        ],
+        "desc": "",
+        "ret": [
+          "table"
+        ]
+      },
+      {
+        "id": "tableOR",
+        "argstr": "...",
+        "args": [
+          {
+            "id": "...",
+            "type": ""
           }
         ],
         "desc": "",
@@ -13686,7 +14281,7 @@
       },
       {
         "id": "AddProcMixN",
-        "argstr": "c: Card, sub: boolean, insf: boolean, number|function, ...: number",
+        "argstr": "c: Card, sub: boolean, insf: boolean, n: number|functio, ...: number",
         "args": [
           {
             "id": "c",
@@ -13699,6 +14294,10 @@
           {
             "id": "insf",
             "type": "boolean"
+          },
+          {
+            "id": "n",
+            "type": "number|functio"
           },
           {
             "id": "...",
@@ -13732,7 +14331,7 @@
       },
       {
         "id": "CreateSummonEff",
-        "argstr": "c: card, fusfilter: function, matfilter: function, extrafil: function ,extraop, gc, stage2: function, exactcount: number, value: number, location: number, chkf, desc: string",
+        "argstr": "c: card, fusfilter: function, matfilter: function, extrafil: function , p: extrao, c: g, stage2: function, exactcount: number, value: number, location: number, f: chk, desc: string",
         "args": [
           {
             "id": "c",
@@ -13751,6 +14350,14 @@
             "type": "function"
           },
           {
+            "id": "p",
+            "type": "extrao"
+          },
+          {
+            "id": "c",
+            "type": "g"
+          },
+          {
             "id": "stage2",
             "type": "function"
           },
@@ -13767,11 +14374,15 @@
             "type": "number"
           },
           {
+            "id": "f",
+            "type": "chk"
+          },
+          {
             "id": "desc",
             "type": "string"
           }
         ],
-        "desc": "The function that generates a Fusion Summon effect. By default it's usable for Spells/Traps, usage in monsters requires changing type and code afterwards. Card c is card that uses the effect, fusfilter is the filter for the monster to be Fusion Summoned, matfilter is a function with the restrictions on the default materials returned by GetFusionMaterial,  extrafil is a function that returns a group of extra cards that can be used as fusion materials, and as second optional parameter an additional filter function, extraop is function called right before sending the monsters to the graveyard as material, gc is mandatory card or function returning a group to be used (for effects like Soprano), stage2 is a function called after the monster has been summoned (Shaddol Ruq, Instant Fusion, Flash Fusion, etc.), exactcount is the exact number of materials that must be used if the effect requires is (e.g. Ostinato), int location is the location where to summon fusion monsters from (default LOCATION_EXTRA), chkf are FUSPROC flags for the fusion summon, desc calls a string for the summon effect description.",
+        "desc": "Function that generates a Fusion Summon effect called from the fusion summon procedure defines in \"proc_fusion.lua\" and \"proc_fusion2.lua\". By default it's usable for Spells/Traps, usage in monsters requires changing type and code afterwards. Card c is card that uses the effect, fusfilter is the filter for the monster to be Fusion Summoned, matfilter is a function with the restrictions on the default materials returned by GetFusionMaterial,  extrafil is a function that returns a group of extra cards that can be used as fusion materials, and as second optional parameter an additional filter function, extraop is function called right before sending the monsters to the graveyard as material, gc is mandatory card or function returning a group to be used (for effects like Soprano the Melodious Songtress), stage2 is a function called after the monster has been summoned (Shaddol Ruq, Instant Fusion, Flash Fusion, etc.), exactcount is the exact number of materials that must be used if the effect requires it (e.g. Ostinato), int location is the location where to summon fusion monsters from (default LOCATION_EXTRA), chkf are FUSPROC flags for the fusion summon, desc calls a string for the summon effect description.",
         "ret": [
           "effect"
         ]
@@ -13870,6 +14481,18 @@
           {
             "id": "f",
             "type": "function"
+          },
+          {
+            "id": "a",
+            "type": ""
+          },
+          {
+            "id": "b",
+            "type": ""
+          },
+          {
+            "id": "c",
+            "type": ""
           }
         ],
         "desc": "A filter used in a Synchro procedure when a material is supposed to be non-Tuner. It also has to satisfy condition of (function f) if provided with (a, b, c) parameters.",
@@ -14316,6 +14939,8 @@
       },
       {
         "id": "ReloadFieldEnd",
+        "argstr": "",
+        "args": [],
         "desc": "Stop loading the field for a puzzle."
       },
       {

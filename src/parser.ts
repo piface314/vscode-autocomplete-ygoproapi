@@ -1,40 +1,41 @@
 const luaparse = require('dapetcu21-luaparse')
-import { Callbacks, Globals, Methods } from './data'
+import { Callbacks, Globals, Methods, MethodGroupEntry } from './data'
 
 let OPTIONS: any
-const EMPTY_GROUP = { methods: [] }
+const EMPTY_GROUP: MethodGroupEntry = { cls: '', methods: [] }
+type Scope = { [id: string]: string | null }
 
 export default class Parser {
   static lastCode: string | null = null
-  static scopes: { [id: string]: string | null }[]
+  static scopes: Scope[]
 
-  static checkStaticCall(baseID: string, indexer: string) {
-    return indexer == '.' && Methods.find(g => g.cls == baseID)
+  static checkStaticCall(base: string, indexer: string): MethodGroupEntry | undefined {
+    return indexer == '.' ? Methods.find(g => g.cls == base) : undefined
   }
 
-  static inferTypeFromCode(id: string, code: string) {
+  static inferTypeFromCode(id: string, code: string): MethodGroupEntry | undefined {
     if (code == Parser.lastCode)
       return Parser.getCurrentTypeMethods(id)
     Parser.scopes = [{}]
     try {
       luaparse.parse(code, OPTIONS)
-    } catch(e) { } finally {
+    } catch (e) { } finally {
       Parser.lastCode = code
       return Parser.getCurrentTypeMethods(id)
     }
   }
 
-  static inferTypeFromID(id: string) {
+  static inferTypeFromID(id: string): MethodGroupEntry | undefined {
     const m = id.match(/(.)\d*$/)
     const lastChar = m && m[1]
     return Methods.find(g => g.infer == lastChar)
   }
 
-  static getLastScope() {
+  static getLastScope(): Scope {
     return Parser.scopes[Parser.scopes.length - 1]
   }
 
-  static getGlobalScope() {
+  static getGlobalScope(): Scope {
     return Parser.scopes[0]
   }
 
@@ -110,11 +111,11 @@ export default class Parser {
     return method && method.ret || null
   }
 
-  static getCurrentTypeMethods(id: string) {
+  static getCurrentTypeMethods(id: string): MethodGroupEntry | undefined {
     const type = Parser.getCurrentType(id)
     if (type == 'nil')
       return EMPTY_GROUP
-    return type && Methods.find(g => g.cls == type)
+    return type ? Methods.find(g => g.cls == type) : undefined
   }
 
   static onCreateScope() {
@@ -131,6 +132,8 @@ export default class Parser {
   }
 
   static handleParamName({ parameterOf, parameterIndex }: any) {
+    if (!parameterOf)
+      return null
     const { type, name, identifier } = parameterOf
     let fnID = type == 'Identifier' ? name : identifier && identifier.name
     if (!fnID)

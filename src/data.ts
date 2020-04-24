@@ -8,7 +8,13 @@ import * as endpoints from './data/endpoints.json'
 export type ConstEntry = {
   id: string
   desc: string
-  value?: string
+  value: string
+}
+
+export type ClsEntry = {
+  id: string
+  desc: string
+  module?: boolean
 }
 
 export type ArgEntry = {
@@ -47,7 +53,7 @@ export type CallbackEntry = {
 }
 
 export const Callbacks: CallbackEntry[] = callbacks
-export const Classes: ConstEntry[] = classes
+export const Classes: ClsEntry[] = classes
 export const Constants: ConstEntry[] = constants
 export const Globals: FuncEntry[] = globals
 export const Methods: MethodGroupEntry[] = methods
