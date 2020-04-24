@@ -1,6 +1,6 @@
-# YGOPro API Autocomplete package for VSCode
+# YGOPro API Autocomplete extension for VSCode
 
-This is an autocomplete package for VSCode that covers the YGOPro scripting API, compatible with the bleeding-edge fork of the YGOPro client, [EDOPro](https://github.com/edo9300/edopro/).
+This is an autocomplete extension for VSCode that covers the YGOPro scripting API, compatible with the bleeding-edge fork of the YGOPro client, [EDOPro](https://github.com/edo9300/edopro/).
 
 ## Features
 
