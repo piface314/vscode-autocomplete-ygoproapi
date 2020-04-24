@@ -5,7 +5,17 @@
   "publisher": "piface314",
   "repository": {
     "type": "git",
-    "url": "https://github.com/piface314/autocomplete-ygoproapi"
+    "url": "https://github.com/piface314/vscode-autocomplete-ygoproapi"
+  },
+  "keywords": [
+    "edopro",
+    "ygopro",
+    "yugioh"
+  ],
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#605070",
+    "theme": "dark"
   },
   "version": "1.0.0",
   "engines": {
