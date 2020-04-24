@@ -12,7 +12,7 @@
     "ygopro",
     "yugioh"
   ],
-  "icon": "images/icon.png",
+  "icon": "assets/icon.png",
   "galleryBanner": {
     "color": "#605070",
     "theme": "dark"
