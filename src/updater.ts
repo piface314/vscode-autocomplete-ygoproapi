@@ -25,7 +25,7 @@ export default class Updater {
 
   finish() {
     this.saveLastUpdate()
-    const msg = 'Autocomplete YGOPro API database has been succesfully updated!'
+    const msg = 'Autocomplete EDOPro API database has been succesfully updated!'
     const button = 'Reload'
     vscode.window.showInformationMessage(msg, button).then(s => {
       if (s == button)
