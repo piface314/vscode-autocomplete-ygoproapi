@@ -1,12 +1,13 @@
 {
   "name": "autocomplete-ygoproapi",
-  "displayName": "Autocomplete YGOPro API",
-  "description": "An autocomplete extension for YGOPro scripting API",
+  "displayName": "Autocomplete EDOPro API",
+  "description": "An autocomplete extension for EDOPro scripting API",
   "publisher": "piface314",
   "repository": {
     "type": "git",
     "url": "https://github.com/piface314/vscode-autocomplete-ygoproapi"
   },
+  "license": "MIT",
   "keywords": [
     "edopro",
     "ygopro",
@@ -32,12 +33,12 @@
     "commands": [
       {
         "command": "autocomplete-ygoproapi.update",
-        "title": "Autocomplete YGOPro API: Update Database"
+        "title": "Autocomplete EDOPro API: Update Database"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "Autocomplete YGOPro API",
+      "title": "Autocomplete EDOPro API",
       "properties": {
         "autocomplete-ygoproapi.matchCaseForConstants": {
           "type": "boolean",
@@ -88,6 +89,7 @@
     "@types/text-encoding": "0.0.35",
     "dapetcu21-luaparse": "^0.2.1",
     "papaparse": "^5.2.0",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
